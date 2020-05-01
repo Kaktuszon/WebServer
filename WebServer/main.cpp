@@ -24,5 +24,6 @@ int main(int argc, char* argv[]) {
 	server.setMessage("info.html");
 	server.runServer();
 
+	server.~Server();
 	return 0;
 }
