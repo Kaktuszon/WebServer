@@ -83,7 +83,7 @@ void Server::getAddress() {
 }
 
 void Server::runServer() {
-	std::cout << "Started running server...\n";
+	std::cout << "Started running server...\n\n\n";
 	int iResult;
 	do {
 		char buffer[30000];
@@ -98,6 +98,7 @@ void Server::runServer() {
 				closesocket(m_client_socket);
 				WSACleanup();
 			}
+			std::cout << "Sent data to client.\n";
 		}
 		else if (iResult == 0) {
 			std::cout << "Closing connection...\n";
