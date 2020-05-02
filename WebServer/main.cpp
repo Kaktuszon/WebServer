@@ -20,7 +20,7 @@
 int main(int argc, char* argv[]) {
 	Server server;
 	
-	server.setMessage("info.html");
+	server.setMessage("index.html");
 	server.runServer();
 
 	server.~Server();

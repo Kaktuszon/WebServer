@@ -16,7 +16,7 @@
 
 Server::Server() {
 	getAddress();
-	
+
 	//Create the winsock
 	std::cout << "Initialising Winsock...\n";
 	if (WSAStartup(MAKEWORD(2, 2), &m_wsa) != 0) {
@@ -83,11 +83,13 @@ void Server::getAddress() {
 }
 
 void Server::runServer() {
-	std::cout << "Started running server...\n\n\n";
 	int iResult;
+	char buffer[2000];
+	int iSendResult;
+
+	std::cout << "Started running server...\n\n\n";
+	
 	do {
-		char buffer[30000];
-		int iSendResult;
 
 		iResult = recv(m_client_socket, buffer, strlen(buffer), 0);
 
@@ -115,7 +117,7 @@ void Server::runServer() {
 
 void Server::setMessage(std::string fileName) {
 	std::ifstream file(fileName.c_str());
-	std::string head = "HTTP/1.1 200 OK\nContent-Type: text\nContent-Length: ";
+	std::string head = "HTTP/1.1 200 OK\nServer: kaktusskitserver\nContent-Type: text\nContent-Length: ";
 	std::string body;
 	std::string s;
 
