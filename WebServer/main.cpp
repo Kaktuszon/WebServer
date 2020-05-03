@@ -19,8 +19,9 @@
 int main(int argc, char* argv[]) {
 	Server server;
 
-	server.getAddressSettings();
 	server.setMessage("index.html");
+	server.setupServer();
+	server.getAddressSettings();
 	server.runServer();
 
 	server.~Server();

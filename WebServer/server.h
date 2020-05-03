@@ -11,11 +11,11 @@ class Server
 
 		std::string m_messageToSend;
 
-		Server();
 		~Server();
 
-		void getAddressSettings();
 		int runServer();
+		void setupServer();
+		void getAddressSettings();
 		void setMessage(std::string fileName);
 };
 

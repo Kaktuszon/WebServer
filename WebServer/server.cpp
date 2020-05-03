@@ -13,7 +13,7 @@
 
 #define PORT "8080"
 
-Server::Server() {
+void Server::setupServer() {
 	//Create the winsock
 	std::cout << "Initialising Winsock...\n";
 	if (WSAStartup(MAKEWORD(2, 2), &m_wsa) != 0) {
