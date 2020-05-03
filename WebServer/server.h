@@ -10,7 +10,6 @@ class Server
 		struct addrinfo* m_result = NULL;
 
 		std::string m_messageToSend;
-		bool run;
 
 		Server();
 		~Server();

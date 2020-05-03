@@ -14,7 +14,6 @@
 #define PORT "8080"
 
 Server::Server() {
-	run = true;
 	getAddress();
 
 	//Create the winsock
@@ -134,7 +133,6 @@ void Server::setMessage(std::string fileName) {
 	}
 	else {
 		std::cout << "Could not find file... Program should exit!\n";
-		run = false;
 	}
 
 	file.close();

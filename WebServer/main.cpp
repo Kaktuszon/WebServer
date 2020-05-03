@@ -20,9 +20,7 @@ int main(int argc, char* argv[]) {
 	Server server;
 
 	server.setMessage("index.html");
-	if (server.run) {
-		server.runServer();
-	}
+	server.runServer();
 
 	server.~Server();
 	return 0;
