@@ -116,7 +116,7 @@ int Server::runServer() {
 	return 0;
 }
 
-void Server::setMessage(std::string fileName) {
+bool Server::setMessage(std::string fileName) {
 	std::ifstream file(fileName.c_str());
 	std::string head = "HTTP/1.1 200 OK\nServer: kaktusskitserver\nContent-Type: text\nContent-Length: ";
 	std::string body = "";
@@ -131,6 +131,7 @@ void Server::setMessage(std::string fileName) {
 	}
 	else {
 		std::cout << "Could not find file... Program should exit!\n";
+		return false;
 	}
 
 	file.close();
@@ -140,4 +141,5 @@ void Server::setMessage(std::string fileName) {
 	message.append(body);
 
 	m_messageToSend = message;
+	return true;
 }

@@ -16,6 +16,6 @@ class Server
 		int runServer();
 		void setupServer();
 		void getAddressSettings();
-		void setMessage(std::string fileName);
+		bool setMessage(std::string fileName);
 };
 
