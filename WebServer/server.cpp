@@ -133,6 +133,7 @@ void Server::setMessage(std::string fileName) {
 		run = false;
 	}
 
+	file.close();
 	message.append(head);
 	message.append(std::to_string(strlen(body.c_str())));
 	message.append("\n\n");
