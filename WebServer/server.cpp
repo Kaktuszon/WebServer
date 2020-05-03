@@ -15,6 +15,7 @@
 #define PORT "8080"
 
 Server::Server() {
+	run = true;
 	getAddress();
 
 	//Create the winsock
@@ -88,9 +89,8 @@ void Server::runServer() {
 	int iSendResult;
 
 	std::cout << "Started running server...\n\n\n";
-	
-	do {
 
+	do {
 		iResult = recv(m_client_socket, buffer, strlen(buffer), 0);
 
 		if (iResult > 0) { //Server recieved information from client
@@ -118,13 +118,19 @@ void Server::runServer() {
 void Server::setMessage(std::string fileName) {
 	std::ifstream file(fileName.c_str());
 	std::string head = "HTTP/1.1 200 OK\nServer: kaktusskitserver\nContent-Type: text\nContent-Length: ";
-	std::string body;
-	std::string s;
+	std::string body = "";
+	std::string s = "";
 
 	std::string message;
 
-	while (std::getline(file, s)) {
-		body = body + s;
+	if (file.is_open()) {
+		while (std::getline(file, s)) {
+			body = body + s;
+		}
+	}
+	else {
+		std::cout << "Could not find file... Program should exit!\n";
+		run = false;
 	}
 
 	message.append(head);
