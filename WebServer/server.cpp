@@ -130,7 +130,7 @@ bool Server::setMessage(std::string fileName) {
 		}
 	}
 	else {
-		std::cout << "Could not find file... Program should exit!\n";
+		std::cout << "Could not find file... Program will exit!\n";
 		return false;
 	}
 
@@ -141,5 +141,6 @@ bool Server::setMessage(std::string fileName) {
 	message.append(body);
 
 	m_messageToSend = message;
+
 	return true;
 }
