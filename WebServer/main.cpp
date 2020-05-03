@@ -19,6 +19,7 @@
 int main(int argc, char* argv[]) {
 	Server server;
 
+	server.getAddressSettings();
 	server.setMessage("index.html");
 	server.runServer();
 

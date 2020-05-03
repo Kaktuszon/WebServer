@@ -14,8 +14,6 @@
 #define PORT "8080"
 
 Server::Server() {
-	getAddress();
-
 	//Create the winsock
 	std::cout << "Initialising Winsock...\n";
 	if (WSAStartup(MAKEWORD(2, 2), &m_wsa) != 0) {
@@ -73,7 +71,7 @@ Server::~Server() {
 	WSACleanup();
 }
 
-void Server::getAddress() {
+void Server::getAddressSettings() {
 	ZeroMemory(&m_address, sizeof(m_address));
 	m_address.ai_family = AF_INET;
 	m_address.ai_socktype = SOCK_STREAM;

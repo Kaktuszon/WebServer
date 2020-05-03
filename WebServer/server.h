@@ -14,7 +14,7 @@ class Server
 		Server();
 		~Server();
 
-		void getAddress();
+		void getAddressSettings();
 		int runServer();
 		void setMessage(std::string fileName);
 };
