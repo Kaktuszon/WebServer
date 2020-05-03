@@ -111,6 +111,7 @@ void Server::runServer() {
 
 	std::cout << "\n\n!-- SERVER IS CLOSING --!\n\n";
 
+	WSACleanup();
 	Server::~Server();
 }
 
