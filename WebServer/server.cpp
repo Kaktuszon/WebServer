@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 
-#include <WinSock2.h>
 #include <Ws2tcpip.h>
 #include <Windows.h>
 
