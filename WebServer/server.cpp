@@ -82,7 +82,7 @@ void Server::getAddress() {
 	m_address.ai_flags = AI_PASSIVE;
 }
 
-void Server::runServer() {
+int Server::runServer() {
 	int iResult;
 	char buffer[2000];
 	int iSendResult;
@@ -98,14 +98,17 @@ void Server::runServer() {
 				std::cout << "Failed to send message to client. Error code: " << WSAGetLastError() << std::endl;
 				closesocket(m_client_socket);
 				WSACleanup();
+				return -1;
 			}
 			std::cout << "Sent data to client.\n";
 		}
 		else if (iResult == 0) {
 			std::cout << "Closing connection...\n";
+			return 1;
 		}
 		else {
 			std::cout << "Failed to recive PING from client. Error code: " << WSAGetLastError() << std::endl;
+			return -1;
 		}
 	} while (iResult > 0);
 
@@ -113,6 +116,7 @@ void Server::runServer() {
 
 	WSACleanup();
 	Server::~Server();
+	return 0;
 }
 
 void Server::setMessage(std::string fileName) {
