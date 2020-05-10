@@ -13,6 +13,12 @@
 
 #define PORT "8080"
 
+Server::~Server() {
+	closesocket(m_listen_socket);
+	closesocket(m_client_socket);
+	WSACleanup();
+}
+
 void Server::setupServer() {
 	//Create the winsock
 	std::cout << "Initialising Winsock...\n";
@@ -45,7 +51,17 @@ void Server::setupServer() {
 	}
 
 	freeaddrinfo(m_result);
+}
 
+void Server::getAddressSettings() {
+	ZeroMemory(&m_address, sizeof(m_address));
+	m_address.ai_family = AF_INET;
+	m_address.ai_socktype = SOCK_STREAM;
+	m_address.ai_protocol = IPPROTO_TCP;
+	m_address.ai_flags = AI_PASSIVE;
+}
+
+void Server::listenToSocket() {
 	//Listen for connection to the listening socket
 	std::cout << "Listen for connection...\n";
 	if (listen(m_listen_socket, SOMAXCONN) == SOCKET_ERROR) {
@@ -61,22 +77,6 @@ void Server::setupServer() {
 		closesocket(m_client_socket);
 		WSACleanup();
 	}
-
-	closesocket(m_listen_socket);
-}
-
-Server::~Server() {
-	closesocket(m_listen_socket);
-	closesocket(m_client_socket);
-	WSACleanup();
-}
-
-void Server::getAddressSettings() {
-	ZeroMemory(&m_address, sizeof(m_address));
-	m_address.ai_family = AF_INET;
-	m_address.ai_socktype = SOCK_STREAM;
-	m_address.ai_protocol = IPPROTO_TCP;
-	m_address.ai_flags = AI_PASSIVE;
 }
 
 int Server::runServer() {

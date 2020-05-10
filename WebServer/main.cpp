@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
 	if (server.setMessage("index.html")) {
 		server.getAddressSettings();
 		server.setupServer();
+		server.listenToSocket();
 		server.runServer();
 	}
 

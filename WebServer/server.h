@@ -16,6 +16,7 @@ class Server
 		int runServer();
 		void setupServer();
 		void getAddressSettings();
+		void listenToSocket();
 		bool setMessage(std::string fileName);
 };
 
